@@ -10,7 +10,7 @@ import dao.UserDAO;
 import dao.UserDAOImpl;
 import javax.swing.JOptionPane;
 import processor.InitDataProcess;
-import processor.InitDataProcessImp;
+import processor.Imp.InitDataProcessImp;
 
 import java.awt.*;
 
@@ -124,7 +124,7 @@ public class LoginForm extends javax.swing.JFrame {
         String password = String.valueOf(text_password.getPassword());
 
         if (AppUtils.isNullOrEmpty(username) || AppUtils.isNullOrEmpty(password)) {
-            JOptionPane.showMessageDialog(null, "Không được để trống");
+            JOptionPane.showMessageDialog(this, "Không được để trống");
             return;
         }
         UserDAO accountDb = new UserDAOImpl();
@@ -135,7 +135,7 @@ public class LoginForm extends javax.swing.JFrame {
             this.setVisible(false);
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "Tên tài khoản hoặc mật khẩu không chính xác!");
+            JOptionPane.showMessageDialog(this, "Tên tài khoản hoặc mật khẩu không chính xác!");
         }
     }//GEN-LAST:event_btn_dangnhapActionPerformed
 

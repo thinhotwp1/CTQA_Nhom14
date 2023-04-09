@@ -13,9 +13,11 @@ public interface UserDAO {
     
     int updateInfor(String username, String fullname, String pass);
 
-    void deleteUser(String username);
+    boolean deleteUser(String username);
 
     List<User> getListUser();
+    
+    int countListUser();
 
     User findOne(String username);
     

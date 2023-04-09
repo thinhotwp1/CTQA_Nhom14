@@ -29,6 +29,7 @@ public class Main extends javax.swing.JFrame implements MenuPanel.MenuSelectList
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         initLayout();
     }
+
     private void initLayout() {
         menuPanel = new MenuPanel(user, this);
         contentPanel = new JPanel();
@@ -38,13 +39,10 @@ public class Main extends javax.swing.JFrame implements MenuPanel.MenuSelectList
 //        permutationPanelTwo = new PermutationPanel();
 //        referenceInfoPanel = new ReferenceInfoPanel();
 //        bagBeatAutoPanel = new BagBeatAutoPanel(this);
-
 //        setContentLayout(overviewSubjectsPanel);
-
         this.add(menuPanel, BorderLayout.WEST);
         this.add(contentPanel, BorderLayout.CENTER);
     }
-
 
     public void setContentLayout(JPanel newContent) {
         contentPanel.removeAll();
@@ -60,6 +58,7 @@ public class Main extends javax.swing.JFrame implements MenuPanel.MenuSelectList
         );
         revalidate();
     }
+
     @Override
     public void onMenuSelected(String value) {
         switch (value) {
@@ -74,7 +73,13 @@ public class Main extends javax.swing.JFrame implements MenuPanel.MenuSelectList
 //                setContentLayout(new ViolationPanel(this));
                 return;
             case MenuPanel.MENU_4:
-                
+                return;
+            case MenuPanel.MENU_5:
+                JFrame newFrame = new QuanLyTaiKhoan();
+                newFrame.setVisible(true);
+                getContentPane().add(newFrame);
+                revalidate();
+                repaint();
                 return;
             default:
                 return;

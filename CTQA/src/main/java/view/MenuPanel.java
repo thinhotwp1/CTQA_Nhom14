@@ -14,7 +14,10 @@ public class MenuPanel extends javax.swing.JPanel{
     public static final String MENU_1_2 = "Cho thuê trang phục online";
     public static final String MENU_2 = "Nhập hàng";
     public static final String MENU_3 = "Trả trang phục và thanh toán";
-    public static final String MENU_4 = "Quản lý tài khoản";
+    public static final String MENU_4 = "Báo cáo";
+    public static final String MENU_4_1 = "Báo cáo doanh thu theo trang phục";
+    public static final String MENU_4_2 = "Báo cáo doanh thu theo khách hàng";
+    public static final String MENU_5 = "Quản lý tài khoản";
 
     MenuSelectListener event;
     User currentUser;
@@ -30,19 +33,23 @@ public class MenuPanel extends javax.swing.JPanel{
         choThueNode.add(new DefaultMutableTreeNode(MENU_1_2));
 
         DefaultMutableTreeNode nhapHangNode = new DefaultMutableTreeNode(MENU_2);
-        nhapHangNode.add(new DefaultMutableTreeNode(MENU_2));
+//        nhapHangNode.add(new DefaultMutableTreeNode(MENU_2));
 
         DefaultMutableTreeNode traVaThanhToan = new DefaultMutableTreeNode(MENU_3);
-        traVaThanhToan.add(new DefaultMutableTreeNode(MENU_3));
+//        traVaThanhToan.add(new DefaultMutableTreeNode(MENU_3));
 
-        DefaultMutableTreeNode quanLyTaiKhoan = new DefaultMutableTreeNode(MENU_4);
-        traVaThanhToan.add(new DefaultMutableTreeNode(MENU_4));
+        DefaultMutableTreeNode baoCao = new DefaultMutableTreeNode(MENU_4);
+        baoCao.add(new DefaultMutableTreeNode(MENU_4_1));
+        baoCao.add(new DefaultMutableTreeNode(MENU_4_2));
+
+        DefaultMutableTreeNode quanLyTaiKhoan = new DefaultMutableTreeNode(MENU_5);
         //create the child nodes
         switch (user.getRole()) {
             case User.ROLE_ADMIN:
                 rootMenu.add(choThueNode);
                 rootMenu.add(nhapHangNode);
                 rootMenu.add(traVaThanhToan);
+                rootMenu.add(baoCao);
                 rootMenu.add(quanLyTaiKhoan);
                 break;
             case User.ROLE_NHAN_VIEN:
@@ -85,7 +92,7 @@ public class MenuPanel extends javax.swing.JPanel{
 
         treeMenu.setCellRenderer(menuItem);
         treeMenu.setRootVisible(false);
-        treeMenu.setRowHeight(30);
+        treeMenu.setRowHeight(25);
         treeMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 treeMenuMouseClicked(evt);

@@ -175,7 +175,8 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void deleteUser(String tenTaiKhoan) {
+    public boolean deleteUser(String tenTaiKhoan) {
+        boolean c = false;
         //delete
         String sql = "DELETE FROM t_user WHERE tenTaiKhoan = ?";
 
@@ -187,12 +188,14 @@ public class UserDAOImpl implements UserDAO {
             ps.setString(1, tenTaiKhoan);
             ps.executeUpdate();
             conn.commit();
+            c = true;
         } catch (SQLException ex) {
             System.out.println(ex);
         } finally {
             MySQLConnection.getInstance().closePrepareStatement(ps);
-            MySQLConnection.getInstance().closeConn(conn);
+//            MySQLConnection.getInstance().closeConn(conn);
         }
+        return c;
     }
 
     @Override
@@ -216,13 +219,42 @@ public class UserDAOImpl implements UserDAO {
                 users.add(new User(tenTaiKhoan, fullName, matKhau, roleId));
             }
         } catch (SQLException ex) {
-            System.out.println(ex);
+            System.out.println("Loi khi lay list user" + ex);
         } finally {
             MySQLConnection.getInstance().closeResultSet(rs);
             MySQLConnection.getInstance().closePrepareStatement(ps);
-            MySQLConnection.getInstance().closeConn(conn);
+//            MySQLConnection.getInstance().closeConn(conn);
         }
         return users;
+    }
+    @Override
+    public int countListUser() {
+        List<User> users = new ArrayList<>();
+        //get list 
+        String sql = "SELECT * FROM t_user";
+
+        Connection conn = MySQLConnection.getInstance().getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String tenTaiKhoan = rs.getString("tenTaiKhoan");
+                String fullName = rs.getString("tenNhanVien");
+                String matKhau = rs.getString("matKhau");
+                int roleId = rs.getInt("role");
+                users.add(new User(tenTaiKhoan, fullName, matKhau, roleId));
+            }
+        } catch (SQLException ex) {
+            System.out.println("Loi khi lay list user" + ex);
+        } finally {
+            MySQLConnection.getInstance().closeResultSet(rs);
+            MySQLConnection.getInstance().closePrepareStatement(ps);
+//            MySQLConnection.getInstance().closeConn(conn);
+        }
+        return users.size();
     }
 
     @Override
