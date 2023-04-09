@@ -1,6 +1,6 @@
 package processor;
 
-import dao.UserDAOImpl;
+import dao.Impl.UserDAOImpl;
 import model.User;
 
 public class InitDataProcessImp implements InitDataProcess {

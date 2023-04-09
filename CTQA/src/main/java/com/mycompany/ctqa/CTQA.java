@@ -5,9 +5,7 @@
 
 package com.mycompany.ctqa;
 
-import config.MySQLConnection;
-import java.sql.Connection;
-import java.sql.SQLException;
+import view.LoginForm;
 
 /**
  *
@@ -16,14 +14,6 @@ import java.sql.SQLException;
 public class CTQA {
 
     public static void main(String[] args) {
-        MySQLConnection conn = MySQLConnection.getInstance();
-        Connection connection = conn.getConnection();
-        try {
-            if (!connection.isClosed()) {
-                System.out.println("Connected to MySQL database!");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        LoginForm.getInstance().setVisible(true);
     }
 }

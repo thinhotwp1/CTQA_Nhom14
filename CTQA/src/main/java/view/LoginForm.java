@@ -7,7 +7,7 @@ package view;
 import config.AppUtils;
 import config.FileUtils;
 import dao.UserDAO;
-import dao.UserDAOImpl;
+import dao.Impl.UserDAOImpl;
 import javax.swing.JOptionPane;
 import processor.InitDataProcess;
 import processor.Imp.InitDataProcessImp;
@@ -19,13 +19,22 @@ import java.awt.*;
  * @author Administrator
  */
 public class LoginForm extends javax.swing.JFrame {
+    
+    private static LoginForm sInstance;
+
+    public static LoginForm getInstance() {
+        if (sInstance == null) {
+            sInstance = new LoginForm();
+        }
+        return sInstance;
+    }
 
     InitDataProcess initDataProcess;
 
     /**
      * Creates new form Login
      */
-    public LoginForm() {
+    private LoginForm() {
         initDataProcess = InitDataProcessImp.getInstance();
         initDataProcess.initData();
         initComponents();

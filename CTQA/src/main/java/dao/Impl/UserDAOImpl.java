@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dao;
+package dao.Impl;
 
 import config.MySQLConnection;
+import dao.UserDAO;
 import model.User;
 
 import java.sql.Connection;
@@ -128,7 +129,7 @@ public class UserDAOImpl implements UserDAO {
             System.out.println(ex);
         } finally {
             MySQLConnection.getInstance().closePrepareStatement(ps);
-            MySQLConnection.getInstance().closeConn(conn);
+//            MySQLConnection.getInstance().closeConn(conn);
         }
     }
 

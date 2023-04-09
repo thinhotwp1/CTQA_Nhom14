@@ -17,6 +17,7 @@ public class MenuPanel extends javax.swing.JPanel{
     public static final String MENU_4 = "Báo cáo";
     public static final String MENU_4_1 = "Báo cáo doanh thu theo trang phục";
     public static final String MENU_4_2 = "Báo cáo doanh thu theo khách hàng";
+    public static final String MENU_4_3 = "Báo cáo doanh thu theo nhà phân phối";
     public static final String MENU_5 = "Quản lý tài khoản";
 
     MenuSelectListener event;
@@ -41,6 +42,7 @@ public class MenuPanel extends javax.swing.JPanel{
         DefaultMutableTreeNode baoCao = new DefaultMutableTreeNode(MENU_4);
         baoCao.add(new DefaultMutableTreeNode(MENU_4_1));
         baoCao.add(new DefaultMutableTreeNode(MENU_4_2));
+        baoCao.add(new DefaultMutableTreeNode(MENU_4_3));
 
         DefaultMutableTreeNode quanLyTaiKhoan = new DefaultMutableTreeNode(MENU_5);
         //create the child nodes

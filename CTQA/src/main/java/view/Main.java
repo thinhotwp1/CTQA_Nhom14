@@ -18,6 +18,7 @@ public class Main extends javax.swing.JFrame implements MenuPanel.MenuSelectList
 
     private User user;
     private JPanel contentPanel;
+    private Toolbar toolbarPanel;
 
     public Main() {
 //        initComponents();
@@ -33,6 +34,7 @@ public class Main extends javax.swing.JFrame implements MenuPanel.MenuSelectList
     private void initLayout() {
         menuPanel = new MenuPanel(user, this);
         contentPanel = new JPanel();
+        toolbarPanel = new Toolbar(user, this);
 
 //        overviewSubjectsPanel = new OverviewSubjectsPanel();
 //        permutationPanelOne = new PermutationPanel();
@@ -42,6 +44,8 @@ public class Main extends javax.swing.JFrame implements MenuPanel.MenuSelectList
 //        setContentLayout(overviewSubjectsPanel);
         this.add(menuPanel, BorderLayout.WEST);
         this.add(contentPanel, BorderLayout.CENTER);
+        this.add(toolbarPanel, BorderLayout.NORTH);
+        this.pack();
     }
 
     public void setContentLayout(JPanel newContent) {
@@ -63,23 +67,24 @@ public class Main extends javax.swing.JFrame implements MenuPanel.MenuSelectList
     public void onMenuSelected(String value) {
         switch (value) {
             case MenuPanel.MENU_1:
-//                ImportFileDauVaoNew importFileDauVao = new ImportFileDauVaoNew(contentPanel, menuPanel);
-//                createDialog("Import dữ liệu đầu vào", importFileDauVao, 332, 169).setVisible(true);
                 return;
             case MenuPanel.MENU_2:
-//                setContentLayout(new ExamRoomPanel());
                 return;
             case MenuPanel.MENU_3:
-//                setContentLayout(new ViolationPanel(this));
                 return;
             case MenuPanel.MENU_4:
                 return;
+            case MenuPanel.MENU_4_1:
+//              setContentLayout(new BaoCaoTrangPhucByDoanhThu());
+                return;
+            case MenuPanel.MENU_4_2:
+                setContentLayout(new BaoCaoKhachHangByDoanhThu());
+                return;
+            case MenuPanel.MENU_4_3:
+//                setContentLayout(new BaoCaoNPPByDoanhThu());
+                return;
             case MenuPanel.MENU_5:
-                JFrame newFrame = QuanLyTaiKhoan.getInstance();
-                newFrame.setVisible(true);
-                getContentPane().add(newFrame);
-                revalidate();
-                repaint();
+                setContentLayout(new QuanLyUser());
                 return;
             default:
                 return;
