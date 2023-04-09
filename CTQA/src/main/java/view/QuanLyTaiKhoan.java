@@ -5,6 +5,7 @@
 package view;
 
 import dao.UserDAOImpl;
+import java.io.Serializable;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -14,14 +15,22 @@ import model.User;
  *
  * @author ThinhLD
  */
-public class QuanLyTaiKhoan extends javax.swing.JFrame {
+public class QuanLyTaiKhoan extends javax.swing.JFrame implements Serializable{
 
     DefaultTableModel model = new DefaultTableModel();
+    private static QuanLyTaiKhoan instance;
+    
+    public static synchronized QuanLyTaiKhoan getInstance() {
+        if (instance == null) {
+            instance = new QuanLyTaiKhoan();
+        }
+        return instance;
+    }
 
     /**
      * Creates new form QuanLyTaiKhoan
      */
-    public QuanLyTaiKhoan() {
+    private QuanLyTaiKhoan() {
         initComponents();
     }
 

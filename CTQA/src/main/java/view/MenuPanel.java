@@ -1,7 +1,7 @@
 package view;
 
 import model.User;
-import view.adapter.MenuTreeCellRenderer;
+import adapter.MenuTreeCellRenderer;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.event.MouseAdapter;

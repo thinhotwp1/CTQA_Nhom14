@@ -75,7 +75,7 @@ public class Main extends javax.swing.JFrame implements MenuPanel.MenuSelectList
             case MenuPanel.MENU_4:
                 return;
             case MenuPanel.MENU_5:
-                JFrame newFrame = new QuanLyTaiKhoan();
+                JFrame newFrame = QuanLyTaiKhoan.getInstance();
                 newFrame.setVisible(true);
                 getContentPane().add(newFrame);
                 revalidate();
