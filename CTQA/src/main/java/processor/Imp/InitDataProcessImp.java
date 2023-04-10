@@ -1,9 +1,11 @@
 package processor.Imp;
 
 import dao.Impl.KhachHangDAOImp;
+import dao.Impl.NhaPhanPhoiDAOImp;
 import dao.Impl.TrangPhucDAOImp;
 import dao.Impl.UserDAOImpl;
 import model.KhachHang;
+import model.NhaPhanPhoi;
 import model.TrangPhuc;
 import model.User;
 import processor.InitDataProcess;
@@ -26,11 +28,11 @@ public class InitDataProcessImp implements InitDataProcess {
         userDAO.insertUser(new User("admin", "Admin", "1", 0));
         userDAO.insertUser(new User("nv", "NhanVien", "1", 1));
 
-        KhachHangDAOImp khachHangDAOImp = new KhachHangDAOImp();
-        khachHangDAOImp.createTableKhachHang();
-        khachHangDAOImp.insertKhachHang(new KhachHang("Chou Beo", "0923001270", "Hà Đông", 150000));
-        khachHangDAOImp.insertKhachHang(new KhachHang("Thinh Beo", "0923001271", "Cổ Nhuế 2", 120000));
-        khachHangDAOImp.insertKhachHang(new KhachHang("Beo Beo", "0923001273", "Hà Đông", 200000));
+        NhaPhanPhoiDAOImp NhaPhanPhoiDAOImp = new NhaPhanPhoiDAOImp();
+        NhaPhanPhoiDAOImp.createTableNhaPhanPhoi();
+        NhaPhanPhoiDAOImp.insertNhaPhanPhoi(new NhaPhanPhoi("Chou Beo", "0923001270", "Hà Đông", 1500000));
+        NhaPhanPhoiDAOImp.insertNhaPhanPhoi(new NhaPhanPhoi("Thinh Beo", "0923001271", "Cổ Nhuế 2", 1200000));
+        NhaPhanPhoiDAOImp.insertNhaPhanPhoi(new NhaPhanPhoi("Beo Beo", "0923001273", "Hà Đông", 2000000));
 
         TrangPhucDAOImp trangPhucDAOImp = new TrangPhucDAOImp();
         trangPhucDAOImp.createTableTrangPhuc();
