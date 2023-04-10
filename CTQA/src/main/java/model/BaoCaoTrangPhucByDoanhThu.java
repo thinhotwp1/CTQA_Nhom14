@@ -4,22 +4,18 @@
  */
 package model;
 
-import java.util.List;
+import view.BaoCaoView;
 
 /**
  *
  * @author Administrator
  */
 public class BaoCaoTrangPhucByDoanhThu implements BaoCao{
-    private String tenBaoCao;
-    private int loaiBaoCao;
-    private double tongDoanhThu;
-    private String moTa;
-    private List<TrangPhuc> listTrangPhuc;
+
     
     @Override
-    public void taoBaoCao() {
-        System.out.println("BaoCaoQuanAoByDoanhThu");
+    public BaoCaoView taoBaoCao() {
+        return (BaoCaoView) new view.BaoCaoTrangPhucByDoanhThu();
     }
     
 }

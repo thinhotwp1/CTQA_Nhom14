@@ -6,27 +6,26 @@ package view;
 
 import config.AppUtils;
 import config.ExportDataUtils;
-import config.FileUtils;
-import dao.Impl.KhachHangDAOImp;
+import dao.Impl.TrangPhucDAOImp;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.KhachHang;
+import model.TrangPhuc;
 
 /**
  *
  * @author Administrator
  */
-public class BaoCaoKhachHangByDoanhThu extends javax.swing.JPanel implements BaoCaoView{
+public class BaoCaoTrangPhucByDoanhThu extends javax.swing.JPanel implements BaoCaoView{
 
     DefaultTableModel model = new DefaultTableModel();
-    KhachHangDAOImp khachHangDao = new KhachHangDAOImp();
-    List<KhachHang> list = khachHangDao.getListKhachHang();
+    TrangPhucDAOImp TrangPhucDao = new TrangPhucDAOImp();
+    List<TrangPhuc> list = TrangPhucDao.getListTrangPhuc();
 
     /**
-     * Creates new form BaoCaoKhachHangByDoanhThu
+     * Creates new form BaoCaoTrangPhucByDoanhThu
      */
-    public BaoCaoKhachHangByDoanhThu() {
+    public BaoCaoTrangPhucByDoanhThu() {
         initComponents();
     }
 
@@ -67,10 +66,10 @@ public class BaoCaoKhachHangByDoanhThu extends javax.swing.JPanel implements Bao
             }
         });
         jTable1.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 jTable1AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -129,13 +128,14 @@ public class BaoCaoKhachHangByDoanhThu extends javax.swing.JPanel implements Bao
         // TODO add your handling code here:
         jTable1.setModel(model);
         model.addColumn("STT");
-        model.addColumn("Tên khách hàng");
-        model.addColumn("Số điện thoại");
-        model.addColumn("Địa chỉ");
-        model.addColumn("Doanh thu");
+        model.addColumn("Tên trang phục");
+        model.addColumn("Loại trang phục");
+        model.addColumn("Giá cho thuê");
+        model.addColumn("Doanh thu từ trang phục");
+        model.addColumn("Mô tả");
         for (int i = 0; i < list.size(); i++) {
-            KhachHang khachHang = list.get(i);
-            model.addRow(new Object[]{i + 1, khachHang.getTenKhachHang(), khachHang.getSoDienThoai(), khachHang.getDiaChi(), khachHang.getDoanhThuTuKhachHang()});
+            TrangPhuc TrangPhuc = list.get(i);
+            model.addRow(new Object[]{i + 1, TrangPhuc.getTenTrangPhuc(), TrangPhuc.getLoaiTrangPhuc(), TrangPhuc.getGiaChoThue(), TrangPhuc.getDoanhThuTuTrangPhuc(),TrangPhuc.getMoTa()});
         }
         jTable1.setModel(model);
     }//GEN-LAST:event_jTable1AncestorAdded
@@ -147,7 +147,7 @@ public class BaoCaoKhachHangByDoanhThu extends javax.swing.JPanel implements Bao
             JOptionPane.showMessageDialog(this, "Chưa chọn đường dẫn để tải file excel xuống !");
             return;
         }
-        ExportDataUtils.exportExcelKhachHang(filePath, list);
+        ExportDataUtils.exportExcelTrangPhuc(filePath, list);
         JOptionPane.showMessageDialog(this, "Xuất file thành công ! \n" + filePath + "\\" + "KHACH_HANG.xlsx");
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -5,6 +5,7 @@
 package model;
 
 import java.util.List;
+import view.BaoCaoView;
 
 /**
  *
@@ -18,8 +19,8 @@ public class BaoCaoNPPByDoanhThu implements BaoCao{
     private List<NhaPhanPhoi> listNPP;
     
     @Override
-    public void taoBaoCao() {
-        System.out.println("BaoCaoNPPByDoanhThu");
+    public BaoCaoView taoBaoCao() {
+        return (BaoCaoView) new view.BaoCaoNPPByDoanhThu();
     }
     
 }

@@ -8,6 +8,7 @@ import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import view.BaoCaoView;
 
 @Data
 @NoArgsConstructor
@@ -18,10 +19,11 @@ public class BaoCaoKhachHangByDoanhThu implements BaoCao{
     private double tongDoanhThu;
     private String moTa;
     private List<KhachHang> listKH;
+
     
     @Override
-    public void taoBaoCao() {
-        System.out.println("BaoCaoKhachHangByDoanhThu");
+    public BaoCaoView taoBaoCao() {
+        return (BaoCaoView) new view.BaoCaoKhachHangByDoanhThu();
     }
     
 }

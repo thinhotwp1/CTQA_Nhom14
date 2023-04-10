@@ -10,5 +10,6 @@ package config;
  */
 public class ExportBase {
         protected static final String[] COLUMNS_KHACH_HANG = {"STT", "Tên khách hàng", "Số điện thoại", "Địa chỉ", "Doanh thu"};
+        protected static final String[] COLUMNS_TRANG_PHUC = {"STT", "Tên trang phục", "Loại trang phục", "Giá cho thuê", "Doanh thu từ trang phục","Mô tả"};
 
 }

@@ -4,10 +4,12 @@
  */
 package model;
 
+import view.BaoCaoView;
+
 /**
  *
  * @author Administrator
  */
 public interface BaoCao {
-    void taoBaoCao();
+    BaoCaoView taoBaoCao();
 }

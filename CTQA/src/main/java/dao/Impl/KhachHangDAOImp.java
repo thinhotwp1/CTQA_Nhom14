@@ -59,7 +59,7 @@ public class KhachHangDAOImp implements KhachHangDAO {
             System.out.println(ex);
         } finally {
             MySQLConnection.getInstance().closePrepareStatement(ps);
-            MySQLConnection.getInstance().closeConn(conn);
+//            MySQLConnection.getInstance().closeConn(conn);
         }
     }
 
@@ -157,7 +157,7 @@ public class KhachHangDAOImp implements KhachHangDAO {
                 return null;
             }
         } catch (SQLException ex) {
-            System.out.println("Loi khi tim tai khoan:\n" + ex);
+            System.out.println("Loi khi tim khach hang:\n" + ex);
         } finally {
             MySQLConnection.getInstance().closeResultSet(rs);
             MySQLConnection.getInstance().closePrepareStatement(ps);

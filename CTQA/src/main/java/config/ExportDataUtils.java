@@ -16,6 +16,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
 import model.KhachHang;
+import model.TrangPhuc;
 
 /**
  * @author Viet Do
@@ -99,10 +100,65 @@ public class ExportDataUtils extends ExportBase {
         autoResizeColumn(sheet, listColumn.length);
     }
 
-
     private static void autoResizeColumn(Sheet sheet, int lengthColumn) {
         for (int i = 0; i < lengthColumn; i++) {
             sheet.autoSizeColumn(i, true);
+        }
+    }
+
+    public static void exportExcelTrangPhuc(String filePath, List<TrangPhuc> listData) {
+        String fileName = filePath + File.separator + "TRANG_PHUC" + ".xlsx";
+        FileOutputStream fos = null;
+        try {
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet sheet = workbook.createSheet("trang_phuc");
+
+            XSSFCellStyle style = workbook.createCellStyle();
+            style.setBorderTop(BorderStyle.THIN);
+            style.setBorderBottom(BorderStyle.THIN);
+            style.setBorderLeft(BorderStyle.THIN);
+            style.setBorderRight(BorderStyle.THIN);
+
+            createColumn(COLUMNS_TRANG_PHUC, sheet, workbook);
+            int rowNum = 1;
+            int stt = 1;
+            for (TrangPhuc bb : listData) {
+                Row row = sheet.createRow(rowNum++);
+                //set cell
+                Cell cell = row.createCell(0);
+                cell.setCellValue(stt++);
+                cell.setCellStyle(style);
+                Cell cell2 = row.createCell(1);
+                cell2.setCellValue(bb.getTenTrangPhuc());
+                cell2.setCellStyle(style);
+                Cell cell3 = row.createCell(2);
+                cell3.setCellValue(bb.getLoaiTrangPhuc());
+                cell3.setCellStyle(style);
+                Cell cell4 = row.createCell(3);
+                cell4.setCellValue(bb.getGiaChoThue());
+                cell4.setCellStyle(style);
+                Cell cell5 = row.createCell(4);
+                cell5.setCellValue(bb.getDoanhThuTuTrangPhuc());
+                cell5.setCellStyle(style);
+                Cell cell6 = row.createCell(5);
+                cell6.setCellValue(bb.getMoTa());
+                cell6.setCellStyle(style);
+            }
+            autoResizeColumn(sheet, COLUMNS_KHACH_HANG.length);
+            //xuat
+            fos = new FileOutputStream(fileName);
+            workbook.write(fos);
+            workbook.close();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException ex) {
+                    System.out.println(ex);
+                }
+            }
         }
     }
 }

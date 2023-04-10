@@ -7,6 +7,7 @@ package view;
 import java.awt.*;
 import java.util.List;
 import javax.swing.*;
+import model.BaoCaoFactory;
 
 import model.User;
 
@@ -75,13 +76,13 @@ public class Main extends javax.swing.JFrame implements MenuPanel.MenuSelectList
             case MenuPanel.MENU_4:
                 return;
             case MenuPanel.MENU_4_1:
-//              setContentLayout(new BaoCaoTrangPhucByDoanhThu());
+              setContentLayout((JPanel) BaoCaoFactory.taoBaoCao(BaoCaoFactory.BAO_CAO_DOANH_THU_TU_TRANG_PHUC).taoBaoCao());
                 return;
             case MenuPanel.MENU_4_2:
-                setContentLayout(new BaoCaoKhachHangByDoanhThu());
+              setContentLayout((JPanel) BaoCaoFactory.taoBaoCao(BaoCaoFactory.BAO_CAO_DOANH_THU_TU_KHACH_HANG).taoBaoCao());
                 return;
             case MenuPanel.MENU_4_3:
-//                setContentLayout(new BaoCaoNPPByDoanhThu());
+              setContentLayout((JPanel) BaoCaoFactory.taoBaoCao(BaoCaoFactory.BAO_CAO_DOANH_THU_THEO_NHA_PHAN_PHOI).taoBaoCao());
                 return;
             case MenuPanel.MENU_5:
                 setContentLayout(new QuanLyUser());
